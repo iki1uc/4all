@@ -1,35 +1,13 @@
-// 4all.2be4.js
-// ID: 4ALL-2BE4-CORE-01
-
-import ZeroThreeZero from "../ZeroThree/z3.zero.js";
-
-const FourAll2be4 = {
-    id: "4ALL-2BE4-CORE-01",
-    path: "./2be4/2be4.core.json",
-
-    write(data) {
-        const fs = window.require("fs");
-        fs.writeFileSync(this.path, JSON.stringify(data, null, 2));
-    },
-
-    update(groups, toolatorID, scanID) {
-        const payload = {
-            id: "2BE4-4ALL-EVO1-R01",
-            source: "4ALL",
-            zeroRef: {
-                zero: ZeroThreeZero.getZero(),
-                one: ZeroThreeZero.getOne()
-            },
-            groups: groups || [],
-            toolator: toolatorID || null,
-            scan: scanID || null,
-            signals: {},
-            schutz: {}
-        };
-
-        this.write(payload);
-    }
-};
-
-export default FourAll2be4;
-
+{
+  "id": "2BE4-X414-EVO1-R01",
+  "source": "4ALL",
+  "zeroRef": {
+    "zero": "Z3-0",
+    "one": "Z3-1"
+  },
+  "x4": {
+    "font": "X4-Default",
+    "color": "#ff00ff",
+    "effect": "pulse"
+  }
+}
