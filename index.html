@@ -2,20 +2,60 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>4ALL – ikili bereit</title>
+    <title>4ALL Systemstart</title>
+
+    <style id="x4-style"></style>
 </head>
 
-<body id="ikili-body" data-kennung="4ALL-IKILI-CORE">
+<body>
 
-    <h1>ikili bereit</h1>
+    <h1 id="title">4ALL System aktiv</h1>
+    <p id="info">System wird geladen…</p>
 
     <script type="module">
-        import ikiliLoader from "./ikili/ikili.loader.js";
+        /* 1) 4ALL aktivieren (lädt ZeroThree + 4all.2be4.js) */
+        import "./4all/4all.active.js";
 
-        // Startet das gesamte 4ALL-System
-        ikiliLoader.start();
+        /* 2) 2be4 laden */
+        async function load2be4() {
+            const res = await fetch("./2be4/2be4.core.json");
+            return await res.json();
+        }
+
+        /* 3) X4 Style anwenden */
+        function applyX4(x4) {
+            const style = document.getElementById("x4-style");
+
+            style.innerHTML = `
+                body {
+                    font-family: ${x4.font};
+                    color: ${x4.color};
+                    animation: ${x4.effect} 1.5s infinite;
+                }
+
+                @keyframes pulse {
+                    0% { opacity: 1; }
+                    50% { opacity: 0.4; }
+                    100% { opacity: 1; }
+                }
+            `;
+        }
+
+        /* 4) Systemstart */
+        async function startSystem() {
+            const data = await load2be4();
+
+            document.getElementById("info").innerText =
+                "2be4 geladen – ZeroThree 0/1 aktiv: " +
+                data.zeroRef.zero + " / " + data.zeroRef.one;
+
+            applyX4(data.x4);
+
+            console.log("System vollständig aktiv.");
+        }
+
+        startSystem();
     </script>
 
 </body>
 </html>
-
