@@ -1,1 +1,11 @@
+{
+  "id": "4ALL-2BE4-ITEM-01",
+  "type": "2be4-node",
+  "name": "4ALL 2be4 Node",
+  "description": "4ALL trägt Gruppierungen, Toolator/Scan IDs und Zero-Three Nullpunkt in 2be4 ein.",
+  "zeroRef": {
+    "zero": "Z3-0",
+    "one": "Z3-1"
+  }
+}
 
